@@ -1,0 +1,19 @@
+1.Find all the topics and tasks which are thought in the month of October
+db.class.find({month:"October"}).pretty()
+
+2.Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+db.class.find({company_drive_date:{$gt:ISODate("2022-10-15T00:00:00Z"),$lt:ISODate("2022-10-31T00:00:00Z")}})
+
+3.Find all the company drives and students who are appeared for the placement.
+ db.class.find({company_drive:"Appeared"}).pretty()
+
+4.Find the number of problems solved by the user in codekata
+db.class.aggregate([{ $group: { _id: "", TotalSum: { $sum: "$codekata" } } } ])
+
+5.Find all the mentors with who has the mentee's count more than 15
+
+6.Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+db.class.find({$or:[{attendance:"Absent",task:"Not Submit"},{company_drive_date:{$gt:ISODate("2022-10-15T00:00:00Z"),$lt:ISODate("2022-10-31T00:00:00Z")}}]}).pretty()
+
+
+
